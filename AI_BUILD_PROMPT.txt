@@ -1,0 +1,63 @@
+MASTER BUILD PROMPT — INTEGRIX
+Project: Integrix — Autonomous Data Quality and Repair Engine
+
+Act as a senior Python engineer, data-quality architect, product designer and hackathon evaluator. Build and improve the Integrix application using the provided problem statement and the existing repository. Do not remove required functionality to make the UI look simpler.
+
+MISSION
+Create a polished, reliable, explainable data-quality web application. The user uploads a messy CSV or Excel file; the system profiles it, detects issues, diagnoses likely causes, proposes safe repairs, applies only high-confidence deterministic repairs, sends uncertain or destructive changes to a human review queue, validates the result, and exports the cleaned dataset plus a complete audit trail.
+
+NON-NEGOTIABLE FUNCTIONAL REQUIREMENTS
+1. Accept CSV and Excel (.xlsx/.xls) files. Validate empty, malformed, oversized and unsupported files with useful errors.
+2. Detect:
+   - missing and whitespace-only values;
+   - exact duplicate records;
+   - invalid email formats;
+   - invalid phone formats (make country assumptions explicit);
+   - inconsistent categorical labels, including capitalization and whitespace;
+   - mixed date formats, while detecting ambiguous day/month dates;
+   - numeric outliers using a documented statistical method such as IQR.
+3. Each issue must include row number, column, issue category, original value, suggested action/value when defensible, explanation/reason, confidence score from 0 to 1, and status.
+4. Confidence policy: auto-apply only deterministic repairs with confidence >= 0.80. Anything below the threshold, any ambiguous date, missing value requiring imputation, invalid contact value without enough context, outlier and potentially destructive duplicate removal must be marked NEEDS_REVIEW. Never fabricate values.
+5. Keep original data immutable. Make repairs on a copy. Never silently delete rows or overwrite the source.
+6. Produce a complete change log: row, column, old value, new value, reason, confidence, issue type, timestamp if available, and action/status.
+7. Validate after repair by rerunning detection. Show unresolved issues and quantify the before/after change.
+8. Show quality dimensions and a clearly explained overall score. Do not call a heuristic score an industry standard.
+9. Provide a review interface where a human can approve, edit or reject suggestions. Record reviewer decisions and preserve the audit trail.
+10. Export cleaned CSV/Excel, issue report, quality report and change log. Downloads must contain real generated data, not placeholder buttons.
+
+AI-EVALUATION DIFFERENTIATORS
+- Explainability: every recommendation says what was detected, why the system thinks it is wrong, what it proposes, why confidence is high/low, and what evidence supports the action.
+- Human-in-the-loop safety: make uncertainty visible; never auto-fix destructive or ambiguous cases.
+- Data lineage: original data remains unchanged; every applied change is traceable and reversible.
+- Robustness: handle nulls, whitespace, mixed types, unusual headers, empty columns, duplicate indices, small datasets, very large values and malformed rows.
+- Reproducibility: deterministic rules produce the same result on the same input.
+- Evaluation mode: include a built-in messy sample dataset with known defects and a test/evaluation report showing detected defects, repairs, unresolved issues and score changes. Do not hardcode a perfect score.
+- User trust: display privacy note, file metadata, assumptions, limitations and clear errors.
+- UX: clean, modern, responsive dashboard with clear navigation, strong hierarchy, concise labels, accessible contrast, meaningful empty states and progress feedback. Avoid clutter, excessive gradients, fake AI claims, decorative charts without meaning, and nonfunctional controls.
+
+DESIGN DIRECTION
+Create a premium analytics product named INTEGRIX. Use a restrained deep-navy / teal palette, off-white canvas, crisp typography, generous spacing, clear KPI cards, subtle borders, readable tables, status chips and purposeful charts. The first screen should immediately communicate the value proposition and offer a prominent upload action. Provide an overview, issue explorer, human review queue, before/after comparison, audit trail and export area.
+
+TECHNICAL REQUIREMENTS
+- Python, Pandas, Streamlit; use modular files and type hints.
+- Keep detection, repair, validation, data contracts and UI separate.
+- No API keys or external AI dependency for core functionality.
+- Use session state correctly; do not lose the selected dataset between interactions.
+- Use native Streamlit components where possible.
+- Add unit tests for each detector and repair policy, including negative tests proving unsafe cases are not auto-fixed.
+- Provide requirements.txt, README with Windows PowerShell setup, sample data, and clear run commands.
+- Avoid fabricated features, fake metrics, dead buttons, placeholder outputs and swallowed exceptions.
+- Keep code readable and explain non-obvious logic.
+
+DELIVERABLES
+Return the complete working project tree. Before finishing:
+1. Run syntax checks and tests.
+2. Verify app starts.
+3. Test sample CSV end-to-end.
+4. Confirm each required issue category is detected.
+5. Confirm only eligible high-confidence repairs are applied.
+6. Confirm review queue and exports work.
+7. List remaining limitations honestly.
+8. Provide exact commands to run in VS Code on Windows.
+
+Do not merely describe what should be built. Implement it. If a requirement is unclear, state the assumption and choose the safest behavior rather than inventing data.

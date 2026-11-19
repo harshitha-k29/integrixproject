@@ -1,0 +1,13 @@
+customer_id,name,email,phone,gender,signup_date,age,annual_spend
+101,Asha Rao,asha@example.com,+91 9876543210,Female,2024-01-12,24,42000
+102,Rahul Nair,rahul.example.com,98765-43210,M,12/02/2024,29,51000
+103,Meera Shah,meera@example.com,9876543211,female,2024/03/08,31,47000
+104,Arjun Das,,9876543212,Male,2024-04-10,27,39000
+105,Sana Khan,sana@example.com,abc123,F,10-05-2024,26,45000
+106,Vikram Iyer,vikram@example.com,9876543213,male,2024.06.11,32,48000
+107,Diya Sen,diya@example.com,9876543214,Female,2024-07-09,25,52000
+108,Kabir Roy,kabir@example.com,9876543215,Male,2024-08-01,28,49000
+108,Kabir Roy,kabir@example.com,9876543215,Male,2024-08-01,28,49000
+109,Tara Bose,tara@example.com,9876543216,female,2024-09-15,23,450000
+110,Neil Jain,neil@example.com,9876543217,M,2024-10-03,30,53000
+111,Anaya Pillai,anaya@example.com,9876543218,Female,2024-11-22,,46000
